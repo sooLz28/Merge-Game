@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FruitsResources" load_steps=4 format=3 uid="uid://dichwglxk8tln"]
+
+[ext_resource type="Script" path="res://fruits/resources/fruit_resource.gd" id="1_k0ly1"]
+[ext_resource type="Texture2D" uid="uid://c245eumidletm" path="res://fruits/a9beade21806cfa3.png" id="1_vg58v"]
+[ext_resource type="PackedScene" uid="uid://7imv6bao1cob" path="res://fruits/undroppable/pineapple.tscn" id="2_drx2m"]
+
+[resource]
+script = ExtResource("1_k0ly1")
+fruit_name = "Coconut"
+scale = 0.6
+fruit_sprite = ExtResource("1_vg58v")
+score = 16
+next_fruit = ExtResource("2_drx2m")
+bounce = 0.0
+friction = 0.1

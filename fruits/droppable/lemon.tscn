@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://djxenl3rjrent"]
+
+[ext_resource type="Script" path="res://fruits/fruit.gd" id="1_owjuj"]
+[ext_resource type="Resource" uid="uid://dnndj8swomnhy" path="res://fruits/resources/lemon.tres" id="2_d20d4"]
+[ext_resource type="Texture2D" uid="uid://c245eumidletm" path="res://fruits/a9beade21806cfa3.png" id="2_moenl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fwi6p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvgl6"]
+radius = 124.0
+
+[node name="lemon" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_fwi6p")
+gravity_scale = 0.0
+script = ExtResource("1_owjuj")
+resource = ExtResource("2_d20d4")
+
+[node name="content" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="content"]
+self_modulate = Color(1, 0.976471, 0.454902, 1)
+texture = ExtResource("2_moenl")
+
+[node name="Area2D" type="Area2D" parent="content"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="content/Area2D"]
+shape = SubResource("CircleShape2D_cvgl6")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cvgl6")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="content/Area2D" to="." method="_on_area_2d_body_entered"]

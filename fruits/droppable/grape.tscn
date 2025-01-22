@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://y6sdwijd5s0k"]
+
+[ext_resource type="Script" path="res://fruits/fruit.gd" id="1_1j35w"]
+[ext_resource type="Resource" uid="uid://x8q25rbmt5lf" path="res://fruits/resources/grape.tres" id="2_xlv16"]
+[ext_resource type="Texture2D" uid="uid://c245eumidletm" path="res://fruits/a9beade21806cfa3.png" id="3_h2m8j"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_visk4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mxfq4"]
+radius = 125.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvgl6"]
+radius = 124.0
+
+[node name="grape" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_visk4")
+gravity_scale = 0.0
+script = ExtResource("1_1j35w")
+resource = ExtResource("2_xlv16")
+
+[node name="content" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="content"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="content/Area2D"]
+shape = SubResource("CircleShape2D_mxfq4")
+
+[node name="Sprite" type="Sprite2D" parent="content"]
+self_modulate = Color(0.501961, 0, 1, 1)
+texture = ExtResource("3_h2m8j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cvgl6")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="content/Area2D" to="." method="_on_area_2d_body_entered"]

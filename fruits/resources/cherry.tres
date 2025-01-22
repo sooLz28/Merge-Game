@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FruitsResources" load_steps=4 format=3 uid="uid://c61xmavqjmmcu"]
+
+[ext_resource type="Script" path="res://fruits/resources/fruit_resource.gd" id="1_fesin"]
+[ext_resource type="Texture2D" uid="uid://c245eumidletm" path="res://fruits/a9beade21806cfa3.png" id="1_sq60n"]
+[ext_resource type="PackedScene" uid="uid://y6sdwijd5s0k" path="res://fruits/droppable/grape.tscn" id="2_mfv4w"]
+
+[resource]
+script = ExtResource("1_fesin")
+fruit_name = "Cherry"
+scale = 0.25
+fruit_sprite = ExtResource("1_sq60n")
+score = 4
+next_fruit = ExtResource("2_mfv4w")
+bounce = 0.5
+friction = 0.1

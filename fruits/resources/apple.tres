@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FruitsResources" load_steps=4 format=3 uid="uid://bfhx3rkfmtyiy"]
+
+[ext_resource type="Texture2D" uid="uid://c245eumidletm" path="res://fruits/a9beade21806cfa3.png" id="1_s38iu"]
+[ext_resource type="Script" path="res://fruits/resources/fruit_resource.gd" id="1_yrp1p"]
+[ext_resource type="PackedScene" uid="uid://b5x4w4a3dafel" path="res://fruits/undroppable/coconut.tscn" id="2_1qc84"]
+
+[resource]
+script = ExtResource("1_yrp1p")
+fruit_name = "Apple"
+scale = 0.55
+fruit_sprite = ExtResource("1_s38iu")
+score = 14
+next_fruit = ExtResource("2_1qc84")
+bounce = 0.4
+friction = 0.1

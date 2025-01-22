@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://crn5dw4jb3cei"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_kiiip"]
+[ext_resource type="Texture2D" uid="uid://crchu30neiqhx" path="res://fruits/sprites/BLUEgUY.png" id="2_jqek4"]
+[ext_resource type="PackedScene" uid="uid://cc2uqe0otvhrb" path="res://gameover.tscn" id="3_3r1vu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3pky"]
+size = Vector2(540, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyoq1"]
+size = Vector2(23, 960)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afxte"]
+size = Vector2(540, 34)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_kiiip")
+
+[node name="wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
+position = Vector2(270, 950)
+shape = SubResource("RectangleShape2D_r3pky")
+
+[node name="right" type="CollisionShape2D" parent="wall"]
+position = Vector2(551, 480)
+shape = SubResource("RectangleShape2D_uyoq1")
+
+[node name="left" type="CollisionShape2D" parent="wall"]
+position = Vector2(-11, 480)
+shape = SubResource("RectangleShape2D_uyoq1")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 222.0
+offset_right = 290.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="spawn_point" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(260, 113)
+
+[node name="spawn_cooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.6
+one_shot = true
+
+[node name="Fruits" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="death_zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death_zone"]
+position = Vector2(270, 81)
+shape = SubResource("RectangleShape2D_afxte")
+
+[node name="ColorRect" type="ColorRect" parent="death_zone"]
+offset_left = 236.0
+offset_top = 98.0
+offset_right = 276.0
+offset_bottom = 102.0
+scale = Vector2(1.9141, 0.534694)
+
+[node name="death_timer" type="Timer" parent="."]
+
+[node name="next_fruit_container" type="PanelContainer" parent="."]
+offset_right = 42.0
+offset_bottom = 69.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="next_fruit_container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="next_fruit_container/VBoxContainer"]
+layout_mode = 2
+text = "Next:"
+horizontal_alignment = 1
+
+[node name="Texture" type="TextureRect" parent="next_fruit_container/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_jqek4")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="gameover" parent="." instance=ExtResource("3_3r1vu")]
+visible = false
+
+[connection signal="body_entered" from="death_zone" to="." method="_on_death_zone_body_entered"]
+[connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]

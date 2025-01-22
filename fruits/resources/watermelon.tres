@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FruitsResources" load_steps=3 format=3 uid="uid://br1uaqud0jua6"]
+
+[ext_resource type="Texture2D" uid="uid://bp3uk1kbx2puv" path="res://fruits/sprites/watermelon 255.png" id="1_1s6t8"]
+[ext_resource type="Script" path="res://fruits/resources/fruit_resource.gd" id="1_d20lw"]
+
+[resource]
+script = ExtResource("1_d20lw")
+fruit_name = "Watermelon"
+scale = 0.75
+fruit_sprite = ExtResource("1_1s6t8")
+score = 22
+bounce = 0.0
+friction = 0.1

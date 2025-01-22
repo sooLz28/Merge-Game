@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckwijabxuyeys"]
+
+[ext_resource type="Script" path="res://fruits/fruit.gd" id="1_fko30"]
+[ext_resource type="Resource" uid="uid://i11doja3kosy" path="res://fruits/resources/strawberry.tres" id="2_g82la"]
+[ext_resource type="Texture2D" uid="uid://c245eumidletm" path="res://fruits/a9beade21806cfa3.png" id="2_qahbj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ygmwu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvgl6"]
+radius = 125.004
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6ese"]
+radius = 125.004
+
+[node name="strawberry" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_ygmwu")
+gravity_scale = 0.0
+script = ExtResource("1_fko30")
+resource = ExtResource("2_g82la")
+
+[node name="content" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="content"]
+self_modulate = Color(0.890196, 0.247059, 0.109804, 1)
+texture = ExtResource("2_qahbj")
+
+[node name="Area2D" type="Area2D" parent="content"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="content/Area2D"]
+shape = SubResource("CircleShape2D_cvgl6")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x6ese")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="content/Area2D" to="." method="_on_area_2d_body_entered"]
